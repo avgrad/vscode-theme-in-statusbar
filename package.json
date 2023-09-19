@@ -1,0 +1,103 @@
+{
+    "name": "theme-in-statusbar",
+    "displayName": "Theme in Status Bar",
+    "description": "Shows the current theme in the status bar",
+    "version": "1.0.0",
+    "categories": [
+        "Other"
+    ],
+    "keywords": [
+        "theme",
+        "status bar",
+        "statusbar",
+        "color scheme",
+        "colour scheme",
+        "stream",
+        "blog",
+        "content",
+        "setup",
+        "video",
+        "screenshot"
+    ],
+    "publisher": "avgrad",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/avgrad/vscode-theme-in-statusbar.git"
+    },
+    "bugs": {
+        "url": "https://github.com/avgrad/vscode-theme-in-statusbar/issues"
+    },
+    "homepage": "https://github.com/avgrad/vscode-theme-in-statusbar",
+    "engines": {
+        "vscode": "^1.82.0"
+    },
+    "activationEvents": [
+        "onStartupFinished"
+    ],
+    "main": "./out/extension.js",
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "lint": "eslint src --ext ts"
+    },
+    "devDependencies": {
+        "@types/node": "16.x",
+        "@types/vscode": "^1.82.0",
+        "@typescript-eslint/eslint-plugin": "^6.4.1",
+        "@typescript-eslint/parser": "^6.4.1",
+        "@vscode/vsce": "^2.21.0",
+        "eslint": "^8.47.0",
+        "prettier": "^3.0.3",
+        "typescript": "^5.1.6"
+    },
+    "contributes": {
+        "configuration": {
+            "title": "Theme in Status Bar",
+            "properties": {
+                "themeInStatusBar.format": {
+                    "type": "string",
+                    "default": "Theme: \"${name}\" by ${author}",
+                    "markdownDescription": "Configure how your current theme is displayed in the status bar.\n\nFollowing placeholders will be replaced:\n\n- `${name}` will be replaced with the theme name\n- `${author}` will be replaced with the author of the theme extension\n- `${extensionName}` will be replaced with the name of the extension\n- `${extensionId}` will be replaced with the theme extensions identifier\n\nTry one of these Examples: \n- [`Theme: \"${name}\" by ${author}` *(default)*](command:themeInStatusBar.setFormat?%5B%22Theme:%20%5C%22$%7Bname%7D%5C%22%20by%20$%7Bauthor%7D%22%5D)\n- [*(empty, Icon only)*](command:themeInStatusBar.setFormat?%5B%22%22%5D)\n- [`${name}`](command:themeInStatusBar.setFormat?%5B%22%20$%7Bname%7D%22%5D)\n- [`\"${name}\" from ${extensionName} by ${author}`](command:themeInStatusBar.setFormat?%5B%22%5C%22$%7Bname%7D%5C%22%20from%20$%7BextensionName%7D%20by%20$%7Bauthor%7D%22%5D)",
+                    "examples": [
+                        "",
+                        "${name}",
+                        "\"${name}\" from ${extensionName} by ${author}"
+                    ]
+                },
+                "themeInStatusBar.clickBehavior": {
+                    "type": "string",
+                    "default": "openThemeSwitcher",
+                    "description": "Select the behavior when the status bar item is clicked",
+                    "enum": [
+                        "openThemeSwitcher",
+                        "showThemeExtension"
+                    ],
+                    "enumItemLabels": [
+                        "Open Theme Switcher",
+                        "Show Extension for Theme"
+                    ]
+                },
+                "themeInStatusBar.itemAlignment": {
+                    "type": "string",
+                    "default": "right",
+                    "description": "On which side of the status bar the theme item will appear.",
+                    "enum": [
+                        "left",
+                        "right"
+                    ],
+                    "enumItemLabels": [
+                        "Left",
+                        "Right"
+                    ]
+                },
+                "themeInStatusBar.itemPriority": {
+                    "type": "integer",
+                    "default": -1000,
+                    "description": "The priority of the status bar item (determines its positioning order along other status bar items)."
+                }
+            }
+        }
+    }
+}
